@@ -1,0 +1,11 @@
+Z:\Applications\C#\Auto Clicker\Auto Clicker\bin\Debug\Auto Clicker.exe.config
+Z:\Applications\C#\Auto Clicker\Auto Clicker\bin\Debug\Auto Clicker.exe
+Z:\Applications\C#\Auto Clicker\Auto Clicker\bin\Debug\Auto Clicker.pdb
+Z:\Applications\C#\Auto Clicker\Auto Clicker\obj\Debug\Auto Clicker.csprojResolveAssemblyReference.cache
+Z:\Applications\C#\Auto Clicker\Auto Clicker\obj\Debug\Auto_Clicker.Properties.Resources.resources
+Z:\Applications\C#\Auto Clicker\Auto Clicker\obj\Debug\Auto Clicker.csproj.GenerateResource.Cache
+Z:\Applications\C#\Auto Clicker\Auto Clicker\obj\Debug\Auto Clicker.csproj.CoreCompileInputs.cache
+Z:\Applications\C#\Auto Clicker\Auto Clicker\obj\Debug\Auto Clicker.exe
+Z:\Applications\C#\Auto Clicker\Auto Clicker\obj\Debug\Auto Clicker.pdb
+Z:\Applications\C#\Auto Clicker\Auto Clicker\obj\Debug\Auto_Clicker.ClickerParams.resources
+Z:\Applications\C#\Auto Clicker\Auto Clicker\obj\Debug\Auto_Clicker.MainForm.resources
