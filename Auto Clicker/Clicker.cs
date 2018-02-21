@@ -64,6 +64,8 @@ namespace Auto_Clicker
             uint X = (uint)Cursor.Position.X;
             uint Y = (uint)Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
+
+            setClicks(getClicks() + 1);
         }
 
         public void loopMouseClick(ref Boolean doLoop)

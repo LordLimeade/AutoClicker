@@ -181,7 +181,7 @@
             this.untilStoppedToolStripMenuItem.CheckOnClick = true;
             this.untilStoppedToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.untilStoppedToolStripMenuItem.Name = "untilStoppedToolStripMenuItem";
-            this.untilStoppedToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.untilStoppedToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.untilStoppedToolStripMenuItem.Text = "Until Stopped";
             this.untilStoppedToolStripMenuItem.Click += new System.EventHandler(this.untilStoppedToolStripMenuItem_Click);
             // 
@@ -189,7 +189,7 @@
             // 
             this.whilePressedToolStripMenuItem.CheckOnClick = true;
             this.whilePressedToolStripMenuItem.Name = "whilePressedToolStripMenuItem";
-            this.whilePressedToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.whilePressedToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.whilePressedToolStripMenuItem.Text = "While Pressed";
             this.whilePressedToolStripMenuItem.Click += new System.EventHandler(this.whilePressedToolStripMenuItem_Click);
             // 
@@ -197,7 +197,7 @@
             // 
             this.setAmountToolStripMenuItem.CheckOnClick = true;
             this.setAmountToolStripMenuItem.Name = "setAmountToolStripMenuItem";
-            this.setAmountToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.setAmountToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.setAmountToolStripMenuItem.Text = "Set Amount";
             this.setAmountToolStripMenuItem.Click += new System.EventHandler(this.setAmountToolStripMenuItem_Click);
             // 
@@ -248,6 +248,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ClickerParams";
             this.Text = "ClickerParams";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClickerParams_FormClosing);
             this.Load += new System.EventHandler(this.ClickerParams_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ClickerParams_KeyPress);
             this.ClickerParamsMenu.ResumeLayout(false);

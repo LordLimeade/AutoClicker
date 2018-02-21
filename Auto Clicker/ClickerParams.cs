@@ -19,7 +19,7 @@ namespace Auto_Clicker
         private KeyPressEventArgs _commandKey = new KeyPressEventArgs('1');
         private Clicker c = new Clicker();
         private System.Windows.Forms.Timer timerCountDown, clickCount;
-        private int counter = 5;
+        private int counter = 5, loopClick = 1;
 
         private void setStartCode(int value)
         {
@@ -62,11 +62,6 @@ namespace Auto_Clicker
             return _startCode;
         }
 
-        private void Exit(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
         private void startClicking()
         {
             int code = checkMode();
@@ -82,6 +77,16 @@ namespace Auto_Clicker
                 default:
                     MessageBox.Show("Mode not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+            }
+        }
+
+        private void startLoopClick()
+        {
+
+            for (int x = 0; x < loopClick; x++)
+            {
+                c.DoMouseClick();
+                Thread.Sleep(c.getInterval());
             }
         }
 
@@ -122,6 +127,8 @@ namespace Auto_Clicker
                         MessageBox.Show("Invalid value entered for number of clicks", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return 1;
                     }
+
+                    loopClick = x;
                 }
                 else
                 {
@@ -189,7 +196,12 @@ namespace Auto_Clicker
             ClickTimeTxt.Text = "1000";
 
             whilePressedToolStripMenuItem.Enabled = false;
-            setAmountToolStripMenuItem.Enabled = false;
+            //setAmountToolStripMenuItem.Enabled = false;
+        }
+
+        private void ClickerParams_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
 
         void ClickerParams_KeyPress(object sender, KeyPressEventArgs e)
@@ -207,7 +219,7 @@ namespace Auto_Clicker
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            Exit(sender, e);
+            this.Close();
         }
 
         private void RecordCmdBtn_Click(object sender, EventArgs e)
@@ -217,7 +229,7 @@ namespace Auto_Clicker
         
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Exit(sender, e);
+            this.Close();
         }
         
         private void untilStoppedToolStripMenuItem_Click(object sender, EventArgs e)
@@ -268,25 +280,54 @@ namespace Auto_Clicker
             {
                 return;
             }
-            
-            setTimers();
+
+            if (checkMode() == 0)
+            {
+                setLoopTimer();
+            }
+            else if (checkMode() == 1)
+            {
+                MessageBox.Show("Mode not yet developed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else if (checkMode() == 2)
+            {
+                setStaticTimer();
+            }
         }
 
-        private void setTimers()
+        private void setStaticTimer()
         {
-            counter = 5;
+            counter = 3;
             timerCountDown = new System.Windows.Forms.Timer();
-            timerCountDown.Tick += new EventHandler(timerCountDown_Tick);
+            timerCountDown.Tick += new EventHandler(timerCountDownSet_Tick);
             timerCountDown.Interval = 1000; // 1 second
             timerCountDown.Start();
             timerLbl.Text = counter.ToString();
 
-            clickCount = new System.Windows.Forms.Timer();
-            clickCount.Tick += new EventHandler(clickCount_Tick);
-            clickCount.Interval = 25; // 1 second
+            setClickCounter();
         }
 
-        private void timerCountDown_Tick(object sender, EventArgs e)
+        private void setLoopTimer()
+        {
+            counter = 3;
+            timerCountDown = new System.Windows.Forms.Timer();
+            timerCountDown.Tick += new EventHandler(timerCountDownLoop_Tick);
+            timerCountDown.Interval = 1000; // 1 second
+            timerCountDown.Start();
+            timerLbl.Text = counter.ToString();
+
+            setClickCounter();
+        }
+
+        private void setClickCounter()
+        {
+            clickCount = new System.Windows.Forms.Timer();
+            clickCount.Tick += new EventHandler(clickCount_Tick);
+            clickCount.Interval = 25;
+        }
+
+        private void timerCountDownLoop_Tick(object sender, EventArgs e)
         {
             counter--;
             if (counter <= 0)
@@ -298,6 +339,18 @@ namespace Auto_Clicker
             timerLbl.Text = counter.ToString();
         }
 
+        private void timerCountDownSet_Tick(object sender, EventArgs e)
+        {
+            counter--;
+            if (counter <= 0)
+            {
+                timerCountDown.Stop();
+                clickCount.Start();
+                startLoopClick();
+            }
+            timerLbl.Text = counter.ToString();
+        }
+        
         private void clickCount_Tick(object sender, EventArgs e)
         {
             timesClickedLbl.Text = c.getClicks().ToString();
